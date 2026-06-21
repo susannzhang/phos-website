@@ -1,0 +1,70 @@
+================================================================
+  POINTING phosworld.com AT THIS GITHUB PAGES SITE
+================================================================
+
+Repo:        github.com/susannzhang/phos-website
+Test URL:    https://susannzhang.github.io/phos-website/
+Domain:      phosworld.com  (registered + DNS-managed by Squarespace)
+Nameservers: nse1-4.squarespacedns.com
+
+----------------------------------------------------------------
+STEP 0 — TEST FIRST (no custom domain)
+----------------------------------------------------------------
+While the custom domain is NOT set, the site is live at:
+
+    https://susannzhang.github.io/phos-website/
+
+Use this to review the site before touching DNS.
+(When a custom domain IS set, this test URL 404s on purpose.)
+
+----------------------------------------------------------------
+STEP 1 — RE-ADD THE CUSTOM DOMAIN (when ready to go live)
+----------------------------------------------------------------
+GitHub repo -> Settings -> Pages -> Custom domain
+  Enter:  phosworld.com   -> Save
+(This re-creates a CNAME file in the repo. Expected.)
+
+----------------------------------------------------------------
+STEP 2 — CHANGE DNS IN SQUARESPACE
+----------------------------------------------------------------
+Squarespace -> Settings -> Domains -> phosworld.com -> DNS Settings
+(You may first need to DISCONNECT the domain from your Squarespace
+ site, since it currently serves that site.)
+
+DELETE the existing Squarespace records:
+  - the four A records on host @  ->  198.185.159.144 / .145
+                                      198.49.23.144 / .145
+  - the www CNAME  ->  ext-sq.squarespace.com
+
+ADD these GitHub Pages records:
+
+  TYPE    HOST   VALUE
+  ----    ----   --------------------------
+  A       @      185.199.108.153
+  A       @      185.199.109.153
+  A       @      185.199.110.153
+  A       @      185.199.111.153
+  AAAA    @      2606:50c0:8000::153
+  AAAA    @      2606:50c0:8001::153
+  AAAA    @      2606:50c0:8002::153
+  AAAA    @      2606:50c0:8003::153
+  CNAME   www    susannzhang.github.io
+
+(AAAA / IPv6 records are optional but recommended.)
+
+----------------------------------------------------------------
+STEP 3 — VERIFY
+----------------------------------------------------------------
+- DNS propagation: ~10 min to 1 hr (Squarespace is usually fast).
+- GitHub -> Settings -> Pages -> click "Check again".
+- When the check is green, tick "Enforce HTTPS"
+  (the TLS cert can take a few extra minutes to issue).
+
+NOTE: This takes the current Squarespace site DOWN and replaces it
+with this GitHub Pages site once DNS propagates.
+
+Quick checks from a terminal:
+  dig +short phosworld.com A          (should show 185.199.x.x)
+  dig +short www.phosworld.com        (should show susannzhang.github.io)
+  curl -I https://phosworld.com       (should be 200 from GitHub.com)
+================================================================
