@@ -31,10 +31,17 @@ Squarespace -> Settings -> Domains -> phosworld.com -> DNS Settings
 (You may first need to DISCONNECT the domain from your Squarespace
  site, since it currently serves that site.)
 
-DELETE the existing Squarespace records:
+DELETE the existing Squarespace records by removing the whole
+"Squarespace Defaults" preset (trash icon). That clears:
   - the four A records on host @  ->  198.185.159.144 / .145
                                       198.49.23.144 / .145
   - the www CNAME  ->  ext-sq.squarespace.com
+  - the HTTPS (SVCB) record on @  ->  ipv4hint=198.185.159.x
+    (IMPORTANT: this one also routes to Squarespace; must go.)
+Keep the "Squarespace Domain Connect" (_domainconnect) preset - harmless.
+
+NOTE: the 60-day registrar TRANSFER lock does NOT block editing
+these DNS records. Don't try to transfer/unlock the domain.
 
 ADD these GitHub Pages records:
 
