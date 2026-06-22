@@ -17,7 +17,6 @@ with no Squarespace dependency. It's deployed via GitHub Pages and live at
 | `index.html` | Home page (served at the site root) |
 | `contact/index.html` | Contact page → `/contact` |
 | `cart/index.html` | Cart page → `/cart` |
-| `index_og.html` | Kept copy of the home page source (identical to `index.html`) |
 | `assets/` | Full-resolution brand images, logo, favicon |
 | `og_assets/` | Localized Squarespace scripts, styles, and component bundles |
 | `CNAME` | Custom domain (`phosworld.com`) for GitHub Pages |
