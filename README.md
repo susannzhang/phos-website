@@ -1,68 +1,72 @@
 # Website of Phos
 
-A light, one-page site for **Phos** — a research and development lab making
-breakthroughs in plasma-based computing. Phos works on the fundamental research
-behind plasma-based computers and on applications where plasma computing is
-uniquely better than conventional approaches (silicon, photonics).
+The website for **Phos** — a research and development lab making breakthroughs
+in plasma-based computing. Phos works on the fundamental research behind
+plasma-based computers and on applications where plasma computing is uniquely
+better than conventional approaches (silicon, photonics).
 
-Live one-pager built to be pushed straight to GitHub Pages. No build step, no
-dependencies — just static `index.html`, `styles.css`, `particles.js`, and the
-`assets/`.
+This repo is a **static, self-contained snapshot of the original phosworld.com
+site** (built on Squarespace), localized so it serves entirely from this repo
+with no Squarespace dependency. It's deployed via GitHub Pages and live at
+**https://phosworld.com**.
 
-## Design notes
+## What's here
 
-We wanted plasma to be the medium, not just the subject. The brief was *plasma
-and fun moving graphics, but also light and ephemeral* — so:
+| Path | Purpose |
+|------|---------|
+| `index.html` | Home page (served at the site root) |
+| `contact/index.html` | Contact page → `/contact` |
+| `cart/index.html` | Cart page → `/cart` |
+| `index_og.html` | Kept copy of the home page source (identical to `index.html`) |
+| `assets/` | Full-resolution brand images, logo, favicon |
+| `og_assets/` | Localized Squarespace scripts, styles, and component bundles |
+| `CNAME` | Custom domain (`phosworld.com`) for GitHub Pages |
+| `.nojekyll` | Tells GitHub Pages to serve files as-is |
+| `DEPLOY-phosworld-domain.txt` | Step-by-step DNS / custom-domain notes |
 
-- **Deep-space canvas, glowing accents.** A near-black background lets the plasma
-  colours (magenta → violet → cyan, pulled from the brand imagery) glow rather
-  than sit flat. Soft animated aurora blobs + a fine grain keep it airy.
-- **Particles that *are* the pictures.** Each featured image is sampled and
-  rebuilt out of thousands of glowing plasma particles that swarm into its shape.
-  Hover/move your cursor over one and the particles scatter away from you, light
-  up, then spring back into place — the "simulation made real" idea, literally.
-- **Ephemeral motion everywhere.** An ambient field of drifting motes leans
-  gently toward your cursor; sections fade up as you scroll; elegant serif
-  display type (Cormorant Garamond) keeps it weightless.
-- **Light to ship.** Vanilla JS, a single shared glow sprite, particle counts
-  that adapt to screen size, animation paused for off-screen canvases, and full
-  `prefers-reduced-motion` support.
+All internal navigation uses **relative links**, so it works both at the apex
+domain (`phosworld.com`) and under a project path
+(`<user>.github.io/<repo>/`).
 
-## Content
+## How it was made
 
-Copy and assets are preserved from the reference site (phosworld.com): the
-electromagnetism thesis, the sim-to-real gap, plasma-as-substrate, the
-hardware-in-the-loop / fusion work, and the team/mission. Originals live in
-[`assets/`](assets/) at full resolution.
+The original Squarespace pages were saved, then every external reference
+(scripts, stylesheets, component bundles, images) was downloaded into
+`og_assets/` / `assets/` and rewritten to point at those local copies. Nav
+links were converted from absolute (`/contact`) to relative (`contact/`) so the
+multi-page snapshot resolves correctly anywhere it's hosted. Google Fonts are
+still loaded remotely.
+
+> An earlier custom build — a dynamic "plasma particle" one-pager — lived at
+> `index_plasma.html` with `styles.css` / `particles.js`. It was removed but
+> remains recoverable from git history (and the `original` tag marks this
+> snapshot).
 
 ## Run locally
 
-Any static server works (needed so the browser can read image pixels for the
-particle effect — `file://` will block that):
+Use any static server (so relative paths resolve like they do in production):
 
 ```bash
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Deploy to GitHub Pages
+## Deploy
 
-1. Push this folder to a GitHub repo.
-2. **Settings → Pages → Build and deployment → Source: _Deploy from a branch_**,
-   pick `main` / `/ (root)`, save.
-3. The site goes live at `https://<user>.github.io/<repo>/`.
+GitHub Pages serves the `main` branch — **every push auto-redeploys**.
 
-`.nojekyll` is included so GitHub serves the files as-is.
+First-time setup: **Settings → Pages → Build and deployment → Source: _Deploy
+from a branch_**, pick `main` / `/ (root)`. For the custom domain, the `CNAME`
+file plus the DNS records in
+[`DEPLOY-phosworld-domain.txt`](DEPLOY-phosworld-domain.txt) point
+`phosworld.com` at GitHub Pages.
 
-> To use a custom domain (e.g. `phosworld.com`), add a `CNAME` file containing
-> the domain and configure DNS in your registrar.
+## Editing notes
 
-## Editing
-
-- **Copy / sections:** edit `index.html`.
-- **Colours, type, spacing:** CSS variables at the top of `styles.css`.
-- **Particle behaviour:** tweak per-canvas via `data-density` / `data-accent`
-  attributes on each `<canvas class="particle-canvas">`, or the constants in
-  `particles.js`.
-- **Contact email:** `susan@phosteam.com` in the Contact section of
-  `index.html`.
+- **Page content:** edit the relevant `index.html` (home, `contact/`, `cart/`).
+  These are Squarespace-exported markup, so they're verbose — search for the
+  visible text to find what to change.
+- **Contact email:** `susan@phosteam.com`, in the Contact section.
+- **Caveat — the contact form doesn't submit.** On the original it POSTed to
+  Squarespace's backend, which doesn't exist on static hosting. To make it work,
+  wire it to a form service (e.g. Formspree) or a `mailto:`.
