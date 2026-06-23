@@ -1759,6 +1759,77 @@
 
 
 
+<!-- ===== Phos statement section (added) ===== -->
+<section
+  data-test="page-section"
+  data-section-theme="dark"
+  class="page-section phos-statement"
+  aria-label="What Phos does"
+>
+  <style>
+    .phos-statement{
+      width:100%;
+      background:#22232c; /* sampled from hand_em.png background */
+      color:#f3f3f6;
+    }
+    .phos-statement .phos-statement__inner{
+      max-width:var(--sqs-site-max-width,1500px);
+      margin:0 auto;
+      padding:clamp(5rem,11vw,9rem) max(4vw,1.25rem);
+      text-align:center;
+    }
+    .phos-statement .phos-statement__eyebrow{
+      font-family:"Almarai","Helvetica Neue",Arial,sans-serif;
+      font-size:.72rem;
+      letter-spacing:.34em;
+      text-transform:uppercase;
+      color:#7b7b88;
+      margin:0 0 1.8rem;
+    }
+    .phos-statement .phos-statement__headline{
+      font-family:"Libre Baskerville",Georgia,serif;
+      font-style:italic;          /* match the "How physical systems..." lead */
+      font-weight:400;
+      line-height:1.7;
+      letter-spacing:0;
+      font-size:1.6rem;          /* = site --heading-4-size */
+      color:#fff;                 /* lead is black; kept light for the dark band */
+      max-width:660px;
+      margin:0 auto;
+    }
+    .phos-statement .phos-statement__rule{
+      width:48px;height:1px;border:0;
+      background:#3a3a45;
+      margin:clamp(2.2rem,4vw,3.2rem) auto;
+    }
+    .phos-statement .phos-statement__body{
+      max-width:660px;
+      margin:0 auto;
+      text-align:justify;
+    }
+    .phos-statement .phos-statement__body p{
+      font-family:"Almarai","Helvetica Neue",Arial,sans-serif;
+      font-weight:400;
+      font-size:clamp(1rem,1.4vw,1.12rem);
+      line-height:1.5;            /* match "sim-to-real gap..." body (24px/16px) */
+      color:#b9b9c4;
+      margin:0 0 1.5em;           /* paragraph gap = one line */
+    }
+    .phos-statement .phos-statement__body p:last-child{margin-bottom:0;}
+    .phos-statement .phos-statement__body strong{color:#e9e9ef;font-weight:700;}
+  </style>
+  <div class="phos-statement__inner">
+    <p class="phos-statement__eyebrow">What we do</p>
+    <h2 class="phos-statement__headline">Phos is a research and development lab building frontier hardware-integrated AI systems for generalized electromagnetic field design.</h2>
+    <hr class="phos-statement__rule" />
+    <div class="phos-statement__body">
+      <p>How molecules behave in a chemical reaction, how neurons fire in the brain, and how information flows on chip all come down to the electromagnetic (EM) forces governing our everyday interactions. To model such forces in each case requires specialized hardware to collect real-world data as well as carefully designed simulation software built on complex numerical solvers. To model those forces in a general, physically verified environment is impossible&mdash;until now.</p>
+      <p>Our generalized EM RL training pipeline is directly integrated with proprietary hardware that uses electronically tunable plasma elements to simulate arbitrary EM environment dynamics in-device at nanosecond precision.</p>
+    </div>
+  </div>
+</section>
+<!-- ===== end Phos statement section ===== -->
+
 <section
   data-test="page-section"
   
@@ -2872,7 +2943,6 @@
 
 
 
-
 <section
   data-test="page-section"
   
@@ -3429,6 +3499,25 @@
 
 
 
+<!-- ===== Who-we-are dark band override (added) ===== -->
+<style>
+  .page-section[data-section-id="6a3859130686ae345b94739f"] .section-background{
+    background-color:#22232c !important; /* match statement section */
+  }
+  .page-section[data-section-id="6a3859130686ae345b94739f"]{
+    --black-hsl:0,0%,100%;  /* headings -> white, matching the statement headline */
+  }
+  .page-section[data-section-id="6a3859130686ae345b94739f"] p,
+  .page-section[data-section-id="6a3859130686ae345b94739f"] .sqs-html-content li{
+    color:#b9b9c4 !important; /* body -> match statement body */
+  }
+  .page-section[data-section-id="6a3859130686ae345b94739f"] h1,
+  .page-section[data-section-id="6a3859130686ae345b94739f"] h2,
+  .page-section[data-section-id="6a3859130686ae345b94739f"] h3,
+  .page-section[data-section-id="6a3859130686ae345b94739f"] h4{
+    color:#fff !important; /* headline -> match statement headline */
+  }
+</style>
 <section
   data-test="page-section"
   

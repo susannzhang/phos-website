@@ -27,19 +27,6 @@ All internal navigation uses **relative links**, so it works both at the apex
 domain (`phosworld.com`) and under a project path
 (`<user>.github.io/<repo>/`).
 
-## How it was made
-
-The original Squarespace pages were saved, then every external reference
-(scripts, stylesheets, component bundles, images) was downloaded into
-`og_assets/` / `assets/` and rewritten to point at those local copies. Nav
-links were converted from absolute (`/contact`) to relative (`contact/`) so the
-multi-page snapshot resolves correctly anywhere it's hosted. Google Fonts are
-still loaded remotely.
-
-> An earlier custom build — a dynamic "plasma particle" one-pager — lived at
-> `index_plasma.html` with `styles.css` / `particles.js`. It was removed but
-> remains recoverable from git history (and the `original` tag marks this
-> snapshot).
 
 ## Run locally
 
