@@ -1767,6 +1767,10 @@
   aria-label="What Phos does"
 >
   <style>
+    /* mobile only: add hero bottom white space equal to the horizontal margin (6vw gutter) */
+    @media (max-width:767px){
+      .page-section[data-section-id="6a34a9b068f1d03a5ea14f1f"]{ padding-bottom:var(--sqs-mobile-site-gutter, 6vw); }
+    }
     .phos-statement{
       width:100%;
       background:#22232c; /* sampled from hand_em.png background */
@@ -3423,6 +3427,10 @@
   .page-section[data-section-id="6a3859130686ae345b94739f"] h4{
     color:#fff !important; /* headline -> match statement headline */
   }
+  @media (max-width:767px){
+    /* mobile: gap between team image and "Who We Are" headline */
+    .fe-block-b51954a4cd07da5f550d{ margin-top:2rem; }
+  }
 </style>
 <section
   data-test="page-section"
@@ -3562,7 +3570,7 @@
 
 
   .fe-block-5c63c33d93d65029b8ca {
-    grid-area: 2/4/13/10;
+    grid-area: 2/3/13/9;
     z-index: 3;
 
     @media (max-width: 767px) {
